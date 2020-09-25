@@ -8,6 +8,14 @@
     android:orientation="vertical"
     tools:context=".RecruitmentTestActivity">
 
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:gravity="center"
+       android:text="Second Activity!!!"
+       android:padding="@dimen/global_8dp"
+       android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
     <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"

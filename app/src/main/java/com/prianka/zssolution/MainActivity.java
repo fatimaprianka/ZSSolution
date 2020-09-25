@@ -1,5 +1,6 @@
 package com.prianka.zssolution;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -70,12 +71,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                         Toast.makeText(MainActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
+                        if(response.body().getMessage().equals("Successful")){
+                            Intent intent = new Intent(MainActivity.this, RecruitmentTestActivity.class);
+                            startActivity(intent);
+                        }
+
                     }
                 }
 
                 @Override
                 public void onFailure(Call<LoginResponse> call, Throwable t) {
-                    Toast.makeText(MainActivity.this, "Failure!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Failure!"+t, Toast.LENGTH_SHORT).show();
                 }
             });
         }
