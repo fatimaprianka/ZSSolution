@@ -14,12 +14,15 @@ import com.prianka.zssolution.model.Validation;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
         EditText email, password;
         Button loginBtn;
 
         private ApiInterface apiInterface;
+         public static final String BASE_URL = "http://182.160.97.214:81";
         LoginResponse loginResponse;
 
 
@@ -34,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         loginBtn = findViewById(R.id.login_btn);
 
         // Network call
-        apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+//        apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
         loginBtn.setOnClickListener(this);
 
@@ -52,6 +55,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void signIn(){
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
+        apiInterface = retrofit.create(ApiInterface.class);
+
         try{
             Call<LoginResponse>call = apiInterface.userSignIn(email.getText().toString(), password.getText().toString());
 
@@ -69,12 +75,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 @Override
                 public void onFailure(Call<LoginResponse> call, Throwable t) {
-
+                    Toast.makeText(MainActivity.this, "Failure!", Toast.LENGTH_SHORT).show();
                 }
             });
         }
         catch (Exception ex){
-
+            Toast.makeText(this, "The error is : "+ex, Toast.LENGTH_SHORT).show();
         }
 
     }

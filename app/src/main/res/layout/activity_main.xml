@@ -19,15 +19,18 @@
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:hint="@string/username_hint"
+         android:background="@drawable/ash_border_background"
          android:padding="@dimen/global_8dp"
          android:layout_marginLeft="@dimen/global_32dp"
-         android:layout_marginRight="@dimen/global_32dp"/>
+         android:layout_marginRight="@dimen/global_32dp"
+         android:layout_marginBottom="@dimen/global_16dp"/>
 
       <EditText
           android:id="@+id/pass"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:hint="@string/password_hint"
+          android:background="@drawable/ash_border_background"
           android:padding="@dimen/global_8dp"
           android:layout_marginLeft="@dimen/global_32dp"
           android:layout_marginRight="@dimen/global_32dp"/>

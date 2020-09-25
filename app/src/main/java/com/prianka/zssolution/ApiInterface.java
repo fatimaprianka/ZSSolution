@@ -12,7 +12,7 @@ public interface ApiInterface {
 
     //User sign in.......
     @FormUrlEncoded
-    @POST("http://182.160.97.214:81/api/v1/user")
+    @POST("/api/v1/user")
     Call<LoginResponse> userSignIn(@Field("email")String userName,
                                    @Field("password")String password);
 }
